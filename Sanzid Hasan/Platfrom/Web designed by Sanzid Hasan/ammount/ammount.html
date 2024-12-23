@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Payment Table</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #0BFFC5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        /* Navigation Bar */
+        nav {
+            background-color: #0c1013;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0BFFC5;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+        nav a:hover {
+            color: #0BFFC5;
+        }
+        /* Notice Bar */
+        .notice-bar {
+            background-color: #0BFFC5; /* Light blue (akashi) */
+            padding: 10px;
+            color: black;
+            font-size: 18px;
+            font-weight: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .scrolling-text {
+            position: absolute;
+            width: 100%;
+            white-space: nowrap;
+            animation: scroll 10s linear infinite;
+            color: black;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        /* Payment Table */
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            color: #0BFFC5;
+            overflow-x: auto;
+        }
+        th, td {
+            border: 1px solid #0BFFC5;
+            padding: 10px;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        th {
+            background-color: #0c1013;
+            color: #0BFFC5;
+        }
+        td {
+            background-color: #000;
+        }
+        .total-row {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        /* Footer */
+        footer {
+            background-color: #0c1013;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-section {
+            margin: 10px;
+            text-align: left;
+            min-width: 200px;
+        }
+        .footer-section strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .footer-section div {
+            margin: 5px 0;
+        }
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer-section a:hover {
+            color: #0BFFC5;
+        }
+        .social-icon {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .social-icon a {
+            color: #fff;
+            margin: 0 5px;
+        }
+        .social-icon a:hover {
+            color: #0BFFC5;
+        }
+        .footer-bottom {
+            margin-top: 20px;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+            font-size: 14px;
+        }
+        /* Responsive styles for smaller screens */
+        @media (max-width: 1024px) {
+            table {
+                font-size: 16px;
+                width: 95%;
+            }
+            th, td {
+                padding: 8px;
+            }
+            .total-row {
+                font-size: 20px;
+            }
+        }
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+                width: 100%;
+            }
+            th, td {
+                padding: 6px;
+            }
+            .total-row {
+                font-size: 18px;
+            }
+        }
+        @media (max-width: 480px) {
+            table {
+                font-size: 12px;
+            }
+            th, td {
+                padding: 4px;
+            }
+            .total-row {
+                font-size: 16px;
+            }
+        }
+        .confirmation-button, .Back_to_home-button {
+            background-color: #0BFFC5;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .confirmation-button:hover, .Back_to_home-button:hover {
+            background-color: black;
+            color: #0BFFC5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="F:\Sanzid Hasan\Platfrom\Web designed by Sanzid Hasan/index.html" class="logo">IBN(Batch-24)</a>
+        <a href="F:\Sanzid Hasan\Platfrom\Web designed by Sanzid Hasan/index.html">Home</a>
+        <a href="file:///F:/Sanzid%20Hasan/Platfrom/Web%20designed%20by%20Sanzid%20Hasan/index.html#about">Notice</a>
+        <a href="file:///F:/Sanzid%20Hasan/Platfrom/Web%20designed%20by%20Sanzid%20Hasan/index.html#service">About Us</a>
+        <a href="file:///F:/Sanzid%20Hasan/Platfrom/Web%20designed%20by%20Sanzid%20Hasan/index.html#portfolio">Gallery</a>
+        <a href="file:///F:/Sanzid%20Hasan/Platfrom/Web%20designed%20by%20Sanzid%20Hasan/index.html#courses">Payment</a>
+        <a href="file:///F:/Sanzid%20Hasan/Platfrom/Web%20designed%20by%20Sanzid%20Hasan/ammount/ammount.html">Total Amount</a>
+        <a href="file:///F:/Sanzid%20Hasan/Platfrom/Web%20designed%20by%20Sanzid%20Hasan/index.html#service">Contact</a>
+    </nav>
+
+    <!-- Notice Bar -->
+    <div class="notice-bar">
+        <marquee>সকলের অবগতির জন্য: যারা যারা টাকা পেমেন্ট করবে, তাদের টাকা প্রতি বৃহস্পতিবার "Total Amount"-এ যোগ করা হবে। আপনার টাকা যোগ না হলে <a href="https://www.facebook.com/suaib.hasan.sanzid"><u>"Contact"</u></a> বাটনে ক্লিক করে এডমিনকে জানান। ধন্যবাদ। <a href="#">আগের টাকার তালিকা দেখতে এখানে ক্লিক করুন</a></marquee>
+    </div>
+    <h1><u>01-07 January 2025</u></h1>
+
+    <!-- Payment Table -->
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Last payment</th>
+            <th>New payment</th>
+            <th>Total</th>
+            <th>Total Amount</th>
+        </tr>
+        <tr>
+            <td>Sagar</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+            <td rowspan="30" class="total-row">000 tk</td>
+        </tr>
+       <td>Shanto</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Raja</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Sifat</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Sabbir</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Sanzid</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Sulaiman</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Hridoy</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Sumon</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Shawon</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Priash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Yasin</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Rifat (1)</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Borhan</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Shamol</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Ripon</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Ratin</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Rashed</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Ariful</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        </tr>
+       <td>Shihab</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        <td>Rasel</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        <td>Dukhu</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        <td>Shahinur</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        <td>Raihan</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        <td>Rifat (2)</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        <td>Jihan</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        <td>Jihad</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        <td>Nayem</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+        <td>Nirob</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk<br>01-01-25<br>Bkash</td>
+            <td>00 tk</td>
+        </tr>
+    </table>
+    <h3>আগের টাকার তালিকা দেখতে এখানে ক্লিক করুন</h3>
+    <button class="confirmation-button" onclick="window.location.href='#'">Previews amount list</button>
+    <p> </p>
+    <button class="confirmation-button" onclick="window.location.href='file:///F:/Sanzid%20Hasan/Platfrom/Web%20designed%20by%20Sanzid%20Hasan/index.html'">Back to home</button>
+    <p><pre>সকলের অবগতির জন্য:
+      যারা যারা টাকা পেমেন্ট করবে,
+     তাদের টাকা প্রতি বৃহস্পতিবার 
+   "Total Amount"-এ যোগ করা হবে।
+      আপনার টাকা যোগ না হলে 
+     "Contact" বাটনে ক্লিক করে 
+          এডমিনকে জানান।
+            ধন্যবাদ।</pre></p>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <strong>IBN(Batch-24)</strong>
+                <div>The Owner Of This Web Pages.</div>
+            </div>
+            <div class="footer-section">
+                <a href="file:///F:/Sanzid%20Hasan/Platfrom/Web%20designed%20by%20Sanzid%20Hasan/ammount/ammount.html"><strong>Go To Top</strong></a>
+                <div><a href="F:\Sanzid Hasan\Platfrom\Web designed by Sanzid Hasan/index.html">Home</a></div>
+                <div><a href="file:///F:/Sanzid%20Hasan/Platfrom/Web%20designed%20by%20Sanzid%20Hasan/index.html#service">About</a></div>
+                <div><a href="file:///F:/Sanzid%20Hasan/Platfrom/Web%20designed%20by%20Sanzid%20Hasan/index.html#portfolio">Payment</a></div>
+                <div><a href="file:///F:/Sanzid%20Hasan/Platfrom/Web%20designed%20by%20Sanzid%20Hasan/index.html#service">Contact</a></div>
+            </div>
+            <div class="footer-section">
+                <strong>Privacy</strong>
+                <div><a href="#">Privacy & Policy</a></div>
+                <div><a href="#">Terms & Conditions</a></div>
+                <div><a href="#">Refund Policy</a></div>
+            </div>
+            <div class="footer-section">
+                <strong>Designed by Sanzid</strong>
+                <div>+880 1619925255</div>
+                <div><a href="mailto:suaibhasansanzid1@gmail.com">suaibhasansanzid1@gmail.com</a></div>
+                <div class="social-icon">
+                    <a href="#" target="_blank">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            Copyright © IBN(Batch-24)
+        </div>
+    </footer>
+</body>
+</html>
